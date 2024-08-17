@@ -12,8 +12,7 @@ $ docker-compose up -d
 $ mvn clean install
 # Para subir o banco de dados
 $ docker-compose up -d mysql
-# 
-
+ ```
 ```bash
 # Se quiser verificar a cobertura de testes
 $ docker run -d -p 9000:9000 sonarqube
