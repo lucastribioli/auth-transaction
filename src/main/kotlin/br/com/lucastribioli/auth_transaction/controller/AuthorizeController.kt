@@ -3,7 +3,6 @@ package br.com.lucastribioli.auth_transaction.controller
 import br.com.lucastribioli.auth_transaction.application.service.TransactionService
 import br.com.lucastribioli.auth_transaction.domain.dto.ResultTransactionDTO
 import br.com.lucastribioli.auth_transaction.domain.dto.TransactionDTO
-import br.com.lucastribioli.auth_transaction.domain.enum.CodeTransaction
 import org.slf4j.Logger
 import org.slf4j.LoggerFactory
 import org.springframework.http.MediaType
@@ -19,20 +18,13 @@ class AuthorizeController(
     private val transactionService: TransactionService
 ) {
     val log: Logger = LoggerFactory.getLogger(AuthorizeController::class.java)
-    @PostMapping("/simple",
+    @PostMapping("/transaction",
         produces = [MediaType.APPLICATION_JSON_VALUE],
         consumes = [MediaType.APPLICATION_JSON_VALUE])
-    fun simple(@RequestBody transaction: TransactionDTO): ResponseEntity<ResultTransactionDTO> {
-        log.info("Simple transaction: $transaction")
+    fun transaction(@RequestBody transaction: TransactionDTO): ResponseEntity<ResultTransactionDTO> {
+        log.info("Transaction: $transaction")
         return ResponseEntity.ok(transactionService.debit(transaction))
     }
 
-    @PostMapping("/no-benefit",
-        produces = [MediaType.APPLICATION_JSON_VALUE],
-        consumes = [MediaType.APPLICATION_JSON_VALUE])
-    fun noBenefit(transaction: TransactionDTO): ResponseEntity<ResultTransactionDTO> {
-        log.info("No benefit transaction: $transaction")
-        return ResponseEntity.ok(ResultTransactionDTO("", CodeTransaction.APPROVED.code))
-    }
 
 }

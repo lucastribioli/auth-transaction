@@ -20,8 +20,9 @@ $ docker run -d -p 9000:9000 sonarqube
 ```
 > Foi criado um Runner para executar e popular o banco com algumas informações:
 > src/main/kotlin/br/com/lucastribioli/auth_transaction/infrastructure/runner/DataInitializer.kt
-> 
-> 
+ 
+
+> Na pasta postman tem um arquivo com as requisições para serem testadas no postman, basta importar o arquivo e rodar as requisições.
 ## Informações adicionais
 
 + Versão do Java utilizada -> 21
