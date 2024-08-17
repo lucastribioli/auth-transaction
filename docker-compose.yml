@@ -3,19 +3,28 @@ version: '3.8'
 services:
   mysql:
     image: mysql:8.0
-    container_name: mysql_container
+    container_name: mysql_
     environment:
       MYSQL_ROOT_PASSWORD: root
       MYSQL_DATABASE: caju
-      MYSQL_USER: root
       MYSQL_PASSWORD: root
     volumes:
       - ./mysql_data:/var/lib/mysql
     ports:
       - "3306:3306"
     networks:
-      - my_network
+      - backend
+
+  app:
+    build: .
+    container_name: app_
+    ports:
+      - "8080:8080"
+    depends_on:
+      - mysql
+    networks:
+      - backend
 
 networks:
-  my_network:
+  backend:
     driver: bridge
