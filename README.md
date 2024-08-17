@@ -24,7 +24,7 @@ $ docker run -d -p 9000:9000 sonarqube
 > 
 ## Informações adicionais
 
-+ Versão do Java utilizada -> 17
++ Versão do Java utilizada -> 21
 + Versão do Kotlin -> 1.9
 + Gerenciador de Build -> Maven
 + Framework -> Spring

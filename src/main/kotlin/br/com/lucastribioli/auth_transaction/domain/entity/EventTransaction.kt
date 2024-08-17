@@ -17,6 +17,8 @@ data class EventTransaction(
     @JoinColumn(name = "id_account")
     val account: Account,
     val amount: BigDecimal,
+    val balanceBefore: BigDecimal,
+    val balanceAfter: BigDecimal,
     @Column(length = 50)
     val mcc: String = "",
     @Column(length = 150)
