@@ -13,7 +13,6 @@ import io.github.serpro69.kfaker.Faker
 import io.mockk.every
 import io.mockk.mockk
 import io.mockk.verify
-import org.junit.jupiter.api.Assertions
 import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.Test
 import java.math.BigDecimal
@@ -37,7 +36,7 @@ class TransactionServiceTest {
         ),
         amount = BigDecimal(100),
         mcc = "5411",
-        merchant = faker.name.neutralFirstName()
+        merchant = faker.company.name()
     )
 
     @Test
@@ -63,7 +62,7 @@ class TransactionServiceTest {
             accountId = faker.code.asin(),
             amount = BigDecimal(100),
             mcc = "5411",
-            merchant = faker.name.neutralFirstName()
+            merchant = faker.company.name()
         )
         val result = transactionService.debit(transaction)
         assertEquals(CodeTransaction.APPROVED.code, result.code)
@@ -93,7 +92,7 @@ class TransactionServiceTest {
             accountId = faker.code.asin(),
             amount = BigDecimal(100),
             mcc = "5412",
-            merchant = faker.name.neutralFirstName()
+            merchant = faker.company.name()
         )
         val result = transactionService.debit(transaction)
         assertEquals(CodeTransaction.APPROVED.code, result.code)
@@ -123,7 +122,7 @@ class TransactionServiceTest {
             accountId = faker.code.asin(),
             amount = BigDecimal(100),
             mcc = "5811",
-            merchant = faker.name.neutralFirstName()
+            merchant = faker.company.name()
         )
         val result = transactionService.debit(transaction)
         assertEquals(CodeTransaction.APPROVED.code, result.code)
@@ -153,7 +152,7 @@ class TransactionServiceTest {
             accountId = faker.code.asin(),
             amount = BigDecimal(100),
             mcc = "5812",
-            merchant = faker.name.neutralFirstName()
+            merchant = faker.company.name()
         )
         val result = transactionService.debit(transaction)
         assertEquals(CodeTransaction.APPROVED.code, result.code)
@@ -183,7 +182,7 @@ class TransactionServiceTest {
             accountId = faker.code.asin(),
             amount = BigDecimal(100),
             mcc = faker.random.nextInt(10000).toString(),
-            merchant = faker.name.neutralFirstName()
+            merchant = faker.company.name()
         )
         val result = transactionService.debit(transaction)
         assertEquals(CodeTransaction.APPROVED.code, result.code)
@@ -214,7 +213,7 @@ class TransactionServiceTest {
             accountId = faker.code.asin(),
             amount = BigDecimal(100),
             mcc = "",
-            merchant = faker.name.neutralFirstName()
+            merchant = faker.company.name()
         )
         val result = transactionService.debit(transaction)
         assertEquals(CodeTransaction.APPROVED.code, result.code)
@@ -244,7 +243,7 @@ class TransactionServiceTest {
             accountId = faker.code.asin(),
             amount = BigDecimal(100),
             mcc = "5411",
-            merchant = faker.name.neutralFirstName()
+            merchant = faker.company.name()
         )
         val result = transactionService.debit(transaction)
         assertEquals(CodeTransaction.DENIED.code, result.code)
@@ -273,7 +272,7 @@ class TransactionServiceTest {
             accountId = faker.code.asin(),
             amount = BigDecimal(100),
             mcc = "5811",
-            merchant = faker.name.neutralFirstName()
+            merchant = faker.company.name()
         )
         val result = transactionService.debit(transaction)
         assertEquals(CodeTransaction.DENIED.code, result.code)
@@ -302,7 +301,7 @@ class TransactionServiceTest {
             accountId = faker.code.asin(),
             amount = BigDecimal(100),
             mcc = "5811",
-            merchant = faker.name.neutralFirstName()
+            merchant = faker.company.name()
         )
         val result = transactionService.debit(transaction)
         assertEquals(CodeTransaction.APPROVED.code, result.code)
@@ -332,7 +331,7 @@ class TransactionServiceTest {
             accountId = faker.code.asin(),
             amount = BigDecimal(100),
             mcc = "5412",
-            merchant = faker.name.neutralFirstName()
+            merchant = faker.company.name()
         )
         val result = transactionService.debit(transaction)
         assertEquals(CodeTransaction.APPROVED.code, result.code)
@@ -362,7 +361,7 @@ class TransactionServiceTest {
             accountId = faker.code.asin(),
             amount = BigDecimal(100),
             mcc = "",
-            merchant = faker.name.neutralFirstName()
+            merchant = faker.company.name()
         )
         val result = transactionService.debit(transaction)
         assertEquals(CodeTransaction.DENIED.code, result.code)
@@ -378,7 +377,7 @@ class TransactionServiceTest {
             accountId = faker.code.asin(),
             amount = BigDecimal(100),
             mcc = "",
-            merchant = faker.name.neutralFirstName()
+            merchant = faker.company.name()
         )
         val result = transactionService.debit(transaction)
         assertEquals(CodeTransaction.GENERIC_ERROR.code, result.code)
@@ -394,7 +393,7 @@ class TransactionServiceTest {
             accountId = "",
             amount = BigDecimal(100),
             mcc = "",
-            merchant = faker.name.neutralFirstName()
+            merchant = faker.company.name()
         )
         val result = transactionService.debit(transaction)
         assertEquals(CodeTransaction.DENIED.code, result.code)
@@ -427,7 +426,7 @@ class TransactionServiceTest {
             accountId = faker.code.asin(),
             amount = BigDecimal(100),
             mcc = "5811",
-            merchant = faker.name.neutralFirstName()
+            merchant = faker.company.name()
         )
         val result = transactionService.debit(transaction)
         assertEquals(CodeTransaction.DENIED.code, result.code)
@@ -460,7 +459,7 @@ class TransactionServiceTest {
             accountId = faker.code.asin(),
             amount = BigDecimal(100),
             mcc = "5412",
-            merchant = faker.name.neutralFirstName()
+            merchant = faker.company.name()
         )
         val result = transactionService.debit(transaction)
         assertEquals(CodeTransaction.APPROVED.code, result.code)

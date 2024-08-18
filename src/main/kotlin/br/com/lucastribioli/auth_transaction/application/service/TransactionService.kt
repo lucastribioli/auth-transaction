@@ -91,7 +91,7 @@ class TransactionService(
     }
 
     private fun getMCCMerchantOrNull(transaction: TransactionDTO): MCC? {
-        val merchant = merchantRepository.findByName(transaction.merchant)
+        val merchant = merchantRepository.findByName(removeExtraSpaces(transaction.merchant.uppercase()))
         if (merchant != null) return merchant.segment
         return null
     }
@@ -105,6 +105,10 @@ class TransactionService(
             merchant = transaction.merchant
         )
         eventTransactionRepository.save(event)
+    }
+
+    private fun removeExtraSpaces(merchant: String): String {
+        return merchant.replace("\\s+".toRegex(), " ")
     }
 
 }

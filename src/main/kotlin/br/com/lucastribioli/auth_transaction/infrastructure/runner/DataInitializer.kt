@@ -58,15 +58,15 @@ class DataInitializer(
             merchantRepository.saveAll(
                 listOf(
                     Merchant(
-                        name = "Loja do seu Zé",
+                        name = "LOJA DO MANUEL ALAGOAS BR",
                         segment = MCC.FOOD
                     ),
                     Merchant(
-                        name = "PADARIA DO ZE               SAO PAULO BR",
+                        name = "PADARIA DO ZE SAO PAULO BR",
                         segment = MCC.MEAL
                     ),
                     Merchant(
-                        name = "Posto Ipiranga",
+                        name = "POSTO IPIRANGA MINAS GERAIS BR",
                         segment = MCC.CASH
                     ),
                 )

@@ -12,6 +12,8 @@ $ docker-compose up -d
 $ mvn clean install
 # Para subir o banco de dados
 $ docker-compose up -d mysql
+# Para rodar o sistema
+$ mvn spring-boot:run
  ```
 ```bash
 # Se quiser verificar a cobertura de testes
@@ -31,7 +33,7 @@ $ docker run -d -p 9000:9000 sonarqube
 + Versão do MySQL -> 8.0
 ---
 
-### Resposta: Questão aberta
+### Resposta: l4.Questão aberta
 Inicialmente, considerei colocar a transação em uma fila de mensagens para ser processada 
 sequencialmente. No entanto, devido à necessidade de processamento rápido, essa pode não ser 
 a melhor opção. Se precisasse de uma solução rápida e não houvesse tempo para pensar em 
@@ -51,12 +53,22 @@ porque quem  garante que a transação não é uma fraude? Acho que analisaria m
 para ver se realmente é necessário uma solução tão complexa ou se ela se paga.
 
 
-### Considerações
+### Instalações necessárias:
+- [Docker](https://docs.docker.com/get-docker/) 
+- [Docker-compose](https://docs.docker.com/compose/install/)
+- [Maven](https://maven.apache.org/download.cgi)
+- [Java](https://www.oracle.com/java/technologies/javase-jdk21-downloads.html)
+- [Kotlin](https://kotlinlang.org/docs/getting-started.html)
+- [MySQL](https://dev.mysql.com/downloads/mysql/)
+- [SonarQube (opcional)](https://www.sonarqube.org/downloads/)
+- [Postman (opcional)](https://www.postman.com/downloads/)
+
+### Considerações finais
 * Eu coloquei a opção de "mcc" como opcional no payload, porque entendi que como ele poderia vir qualquer coisa, poderia vir nulo também ou não vir;
 * Como não era o foco ter a possibilidade de mudar o banco de dados ou outras ferramentas externas, não partir para uma arquitetura hexagonal, mirei mas em
-uma arquitetura limpa, sem fazer aquele tratamento mais profundo de separar o framework no Domain/Application;
+  uma arquitetura limpa, sem fazer aquele tratamento mais profundo de separar o framework no Domain/Application;
 * Pensei em adicionar uma camada do Spring Security, para garantir a autenticidade do emissor, mas como não foi especificado aqui, acredito que estaria fazendo um overengineering;
 * Adicionei as váriaveis de ambiente direto no properties para facilidade na hora de vocês precisarem configurar;
-* Segui os atributos descritos e não o payload apresentado, porque estavam um pouco divergentes;
-
-
+* Segui os atributos descritos e não o payload apresentado, porque estavam um pouco divergentes, por esse motivo que ele está um pouco diferente, porque não tinha o id da transação por exemplo;
+* Sobre as questões de L1 a L3, eu fiquei na dúvida seram para ser 3 endpoints diferentes ou um só, então fiz um só, mas se for para ser 3, é só me avisar que eu faço as alterações necessárias;
+* Criei uma tabela de eventos para guardar as informações de cada transação, caso aconteça algum problema, teremos os eventos para analisar, no merchant deixei como string, porque pelo que eu entendi ele pode não ter o registro no banco e utilizaremos apenas o mcc.
