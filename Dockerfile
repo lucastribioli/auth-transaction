@@ -14,11 +14,8 @@ FROM eclipse-temurin:21-jdk-alpine
 
 WORKDIR /app
 
-# Copiar o arquivo JAR da camada de construção
 COPY --from=builder /app/target/*.jar /app/auth-transaction.jar
 
-# Expor a porta que a aplicação vai rodar
 EXPOSE 8080
 
-# Comando para rodar a aplicação
-CMD ["java", "-jar", "/app/auth-transaction.jar"]
+ENTRYPOINT ["./wait-for-it.sh", "mysql:3306", "--", "java", "-jar", "/app/auth-transaction.jar"]

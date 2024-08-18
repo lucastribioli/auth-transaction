@@ -3,7 +3,6 @@ version: '3.8'
 services:
   mysql:
     image: mysql:8.0
-    container_name: mysql_
     environment:
       MYSQL_ROOT_PASSWORD: root
       MYSQL_DATABASE: caju
@@ -17,11 +16,14 @@ services:
 
   app:
     build: .
-    container_name: app_
     ports:
       - "8080:8080"
     depends_on:
       - mysql
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:mysql://mysql:3306/caju?useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=UTC
+      SPRING_DATASOURCE_USERNAME: root
+      SPRING_DATASOURCE_PASSWORD: root
     networks:
       - backend
 
