@@ -52,6 +52,9 @@ Gateways de pagamento, ou talvez como é algo que talvez não aconteça com tant
 porque quem  garante que a transação não é uma fraude? Acho que analisaria melhor esse problema, a frequência e o impacto que isso causa,
 para ver se realmente é necessário uma solução tão complexa ou se ela se paga.
 
+------
+Uma parte que esqueci de mencionar, não coloquei Event Stream porque fiquei na dúvida se a latência dele não poderia interferir (por causa dos 100ms), sei que ele é em tempo real, mas precisaria testar, nunca usei ele em uma aplicação que o foco era tempo. Acabei que não mencionei, mas poderia ser uma opção, mas como essa frase estou colocando no dia 24/08, pode desconsiderar.
+------
 
 ### Instalações necessárias:
 - [Docker](https://docs.docker.com/get-docker/) 
